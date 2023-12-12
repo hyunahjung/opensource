@@ -1,0 +1,30 @@
+def solution(r1, r2):
+    # 매개변수로 r1과 r2를 갖는 solution 함수 선언
+    if not (1 <= r1 < r2 <= 1000000):
+        return "잘못된 입력"
+    # if문을 이용해 1 ≤ r1 < r2 ≤ 1,000,000 조건 검사
+    answer = 0
+    for i in range(1, r2):
+    # 두 원의 x좌표에 해당하는 값을 for문을 통해 확인
+        n2 = int((r2 ** 2 - i ** 2) ** (1 / 2))
+        if i >= r1:
+            # i가 r1보다 크거나 같을 때(두 원이 겹치는 부분), 해당하는 y좌표의 점 개수 추가
+            answer += 4 * (n2 + 1)
+        else:
+            n1 = int((r1 ** 2 - i ** 2) ** (1 / 2))
+            if n1 ** 2 + i ** 2 == r1 ** 2:
+                # 첫 번째 원의 경계에 있는 점의 개수 계산하여 추가
+                answer += 4 * (n2 - n1 + 1)
+            else:
+                # 두 원이 중첩되지 않을 경우의 y좌표의 점 개수 추가
+                answer += 4 * (n2 - n1)
+    answer += 4
+    #원점 (0, 0)을 포함
+    return answer
+
+r1 = int(input("작은원의 반지름을 입력하시오: "))
+#input함수 이용해서 r1값 입력받기
+r2 = int(input("큰원의 반지름을 입력하시오: "))
+#input함수 이용해서 r2값 입력받기
+print(solution(r1, r2))
+#결과 출력
