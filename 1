@@ -1,0 +1,24 @@
+def solution(my_string, target):
+    # 매개변수로 문자열 my_string과 target을 갖는 solution 함수 선언
+    if target in my_string:
+        #in 사용해서 my_string안에 target이 부분문자열로 들어있는지 확인
+        answer=1
+        #있으면 answer에 1 넣어주고
+        return answer
+        # answer리턴
+    else:
+        answer=0
+        # 없으면 answer에 0 넣어주고
+        return answer
+        # answer리턴
+
+my_string = input("길이가 1보다 크고 100보다 작은 영소문자 단어를 입력하시오:")
+# input함수 이용해서 my_string값 입력받기
+target = input("길이가 1보다 크고 100보다 작은 영소문자 단어를 입력하시오:")
+# input함수 이용해서 target값 입력받기
+if len(my_string) < 1 or len(my_string) > 100 or len(target) < 1 or len(target) > 100 or not my_string.islower() or not target.islower():
+    print("잘못된 입력입니다.")
+    #if문 이용해서 조건에 부합하지 않는 값 입력시 오류문자 출력
+else:
+    print(solution(my_string, target))
+    #함수값 출력
